@@ -5,6 +5,7 @@ namespace App\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\HttpClient\HttpClient;
@@ -13,17 +14,21 @@ use SimpleXMLElement;
 class BbbCommand extends Command
 {
     protected static $defaultName = 'bbb:get-meetings';
-    private          $apiEndpoint;
-    private          $apiSecret   = '';
+    private          $apiUrl;
+    private          $apiSecret;
 
     protected function configure()
     {
-        $this->apiEndpoint = $_ENV['BBB_API_ENDPOINT'];
-        $this->apiSecret   = $_ENV['BBB_API_SECRET'];
+        $this
+            ->addOption('apiUrl', null, InputOption::VALUE_REQUIRED, 'BBB-API-URL')
+            ->addOption('apiSecret', null, InputOption::VALUE_REQUIRED, 'BBB-API-Secret');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $this->apiUrl    = trim($input->getOption('apiUrl'), '/api') . '/api';
+        $this->apiSecret = $input->getOption('apiSecret');
+
         $client          = HttpClient::create();
         $queryBuild      = $this->getQueryBuild();
         $url             = $this->getUrl($queryBuild);
@@ -55,7 +60,7 @@ class BbbCommand extends Command
             );
         }
 
-        $output->writeln("<info>{$completeCounter} Konferenzen</info>");
+        $output->writeln("<info>{$completeCounter} Konferenzen in {$this->apiUrl}</info>");
         $table->render();
         return 0;
     }
@@ -73,6 +78,6 @@ class BbbCommand extends Command
     private function getUrl(string $queryBuild, string $apiRoute = "getMeetings"): string
     {
         $checksum = $this->getChecksum($apiRoute, $queryBuild);
-        return $this->apiEndpoint . "/{$apiRoute}?checksum={$checksum}";
+        return $this->apiUrl . "/{$apiRoute}?checksum={$checksum}";
     }
 }
