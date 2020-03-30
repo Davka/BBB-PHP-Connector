@@ -1,1 +1,3 @@
-# simple-php-bbb-consumer
+# Simple PHP-BigBlueConnector
+
+### Install
