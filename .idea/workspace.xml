@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7238a5d9-70e7-4a70-a4b9-14eee1012196" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Command/BbbCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/BbbCommand.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -11,7 +10,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -80,7 +79,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585565034159</updated>
-      <workItem from="1585565035716" duration="7124000" />
+      <workItem from="1585565035716" duration="8446000" />
+      <workItem from="1585578719850" duration="122000" />
     </task>
     <servers />
   </component>
@@ -100,9 +100,9 @@
       <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="578" y="269" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.969@0.23.1680.969" timestamp="1585576163305" />
-    <state x="504" y="233" key="run.anything.popup" timestamp="1585576751818">
+    <state x="504" y="233" key="run.anything.popup" timestamp="1585578818875">
       <screen x="0" y="23" width="1680" height="969" />
     </state>
-    <state x="504" y="233" key="run.anything.popup/0.23.1680.969@0.23.1680.969" timestamp="1585576751818" />
+    <state x="504" y="233" key="run.anything.popup/0.23.1680.969@0.23.1680.969" timestamp="1585578818875" />
   </component>
 </project>

@@ -29,13 +29,14 @@ class BbbCommand extends Command
         $this->apiUrl    = trim($input->getOption('apiUrl'), '/api') . '/api';
         $this->apiSecret = $input->getOption('apiSecret');
 
-        $client          = HttpClient::create();
-        $queryBuild      = $this->getQueryBuild();
-        $url             = $this->getUrl($queryBuild);
-        $response        = $client->request('POST', $url);
-        $meetings        = new SimpleXMLElement($response->getContent());
-        $completeCounter = count($meetings->meetings->meeting);
-        $table           = new Table($output);
+        $client                   = HttpClient::create();
+        $queryBuild               = $this->getQueryBuild();
+        $url                      = $this->getUrl($queryBuild);
+        $response                 = $client->request('POST', $url);
+        $meetings                 = new SimpleXMLElement($response->getContent());
+        $completeCounter          = count($meetings->meetings->meeting);
+        $completeParticipantCount = 0;
+        $table                    = new Table($output);
         $table->setHeaders(
             [
                 'Meeting-ID',
@@ -58,10 +59,13 @@ class BbbCommand extends Command
                     $meeting->moderatorCount,
                 ]
             );
+            $completeParticipantCount += (int)$meeting->participantCount;
         }
-
+        $output->writeln("");
         $output->writeln("<info>{$completeCounter} Konferenzen in {$this->apiUrl}</info>");
+        $output->writeln("<info>Insgesamt {$completeParticipantCount} TeilnehmerInnen</info>");
         $table->render();
+        $output->writeln("");
         return 0;
     }
 
