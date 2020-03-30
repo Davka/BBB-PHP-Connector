@@ -10,3 +10,10 @@
 `
 
 To get the information run `bbb-conf --secret` on the BBB-Server
+
+
+## Usage
+
+There is currently only one function for reading out all active conferences
+
+Run `php bin/console bbb:get-meetings`
